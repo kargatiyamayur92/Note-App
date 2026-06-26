@@ -101,7 +101,7 @@ A modern Full Stack Notes Application built with **React.js, Node.js, Express.js
 
 **Mayur Kargatiya**
 
-GitHub: https://github.com/your-github-username
+GitHub: https://github.com/kargatiyamayur92
 
 ---
 
