@@ -1,0 +1,245 @@
+/* =========================
+   THEME VARIABLES
+========================= */
+
+
+:root {
+    --search-container-width: 100%;
+
+    --search-box-width: 600px;
+    --search-box-height: 55px;
+
+    --search-box-bg: #1e293b;
+    --search-border-color: #3b82f6;
+
+    --search-icon-color: #94a3b8;
+    --search-text-color: white;
+    --placeholder-color: #94a3b8;
+
+    --search-shadow: 0 0 15px rgba(59, 130, 246, .3);
+
+    --border-radius: 15px;
+    --transition: 0.3s;
+}
+
+
+/* =========================
+   MAIN CSS
+========================= */
+
+.search-container {
+    width: var(--search-container-width);
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.search-box {
+    width: var(--search-box-width);
+    height: var(--search-box-height);
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0 20px;
+
+    background: var(--search-box-bg);
+
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+
+    transition: var(--transition);
+}
+
+.search-box:hover {
+    transform: translateY(-2px);
+}
+
+.search-box:focus-within {
+    border-color: var(--search-border-color);
+    box-shadow: var(--search-shadow);
+}
+
+.search-icon {
+    color: var(--search-icon-color);
+    font-size: 18px;
+}
+
+.search-box input {
+    flex: 1;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: var(--search-text-color);
+    font-size: 16px;
+}
+
+.search-box input::placeholder {
+    color: var(--placeholder-color);
+}
+
+.category-filter select {
+    height: var(--search-box-height);
+    width: 10rem;
+    background-color: var(--search-box-bg);
+    color: var(--search-text-color);
+    margin-left: 1rem;
+    border-radius: var(--border-radius);
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.category-filter select:focus-within {
+    border-color: var(--search-border-color);
+    box-shadow: var(--search-shadow);
+}
+
+.filterby select {
+    height: var(--search-box-height);
+    width: 10rem;
+    background-color: var(--search-box-bg);
+    color: var(--search-text-color);
+    margin-left: 1rem;
+    border-radius: var(--border-radius);
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.filterby select:focus-within {
+    border-color: var(--search-border-color);
+    box-shadow: var(--search-shadow);
+}
+
+.generate-pdf {
+    height: var(--search-box-height);
+    width: 10rem;
+    background-color: var(--search-box-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    margin-left: 1rem;
+}
+
+.generate-pdf button {
+    height: 100%;
+    width: 100%;
+    background-color: var(--search-box-bg);
+    color: var(--search-text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.generate-pdf:hover {
+    border-color: var(--search-border-color);
+    box-shadow: var(--search-shadow);
+    animation: categoryGlowAnimation 2s infinite ease-in-out;
+}
+
+.generate-pdf:active {
+    scale: 1.1;
+}
+
+
+
+@keyframes categoryGlowAnimation {
+
+    0% {
+        box-shadow:
+            0 0 10px #4285F4,
+            0 0 10px #4285F4,
+            0 0 10px #4285F4;
+    }
+
+    25% {
+        box-shadow:
+            0 0 9px #EA4335,
+            0 0 9px #EA4335,
+            0 0 9px #EA4335;
+    }
+
+    50% {
+        box-shadow:
+            0 0 12px #FBBC05,
+            0 0 12px #FBBC05,
+            0 0 12px #FBBC05;
+    }
+
+    75% {
+        box-shadow:
+            0 0 8px #34A853,
+            0 0 8px #34A853,
+            0 0 8px #34A853;
+    }
+
+    100% {
+        box-shadow:
+            0 0 6px #4285F4,
+            0 0 6pcategoryGlowAnimation 0 0 6px #4285F4;
+    }
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+
+    .search-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .search-box {
+        width: 90%;
+    }
+
+    .category-filter,
+    .filterby {
+        width: 90%;
+    }
+
+    .category-filter select,
+    .filterby select {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+    .search-box {
+        width: 95%;
+        height: 50px;
+        padding: 0 12px;
+    }
+
+    .search-box input {
+        font-size: 14px;
+    }
+
+    .search-icon {
+        font-size: 16px;
+    }
+
+    .category-filter,
+    .filterby {
+        width: 95%;
+    }
+
+    .category-filter select,
+    .filterby select {
+        width: 100%;
+        height: 50px;
+        margin-left: 0;
+        font-size: 14px;
+    }
+}

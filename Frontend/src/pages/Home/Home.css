@@ -1,0 +1,426 @@
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+
+    /* Background Colors */
+    --body-bg: #0f172a;
+    --icon-bg: #192a4f;
+    --note-card-bg: rgba(255, 255, 255, 0.08);
+
+    /* Text Colors */
+    --text-color: white;
+    --paragraph-color: #cbd5e1;
+    --highlight-text: #60a5fa;
+
+    /* Button Colors */
+    --register-btn-bg: #4f46e5;
+    --start-btn-bg: #2563eb;
+
+    /* Border Colors */
+    --login-btn-border: white;
+    --note-card-border: rgba(255, 255, 255, .1);
+
+    /* Shadows */
+    --icon-hover-shadow: 2px 2px 15px rgb(125, 112, 112),
+        -2px -2px 15px rgb(38, 10, 10);
+
+    --start-btn-shadow: 0 0 20px #2563eb;
+
+    /* Radius */
+    --circle-radius: 50%;
+    --button-radius: 8px;
+    --start-btn-radius: 10px;
+    --card-radius: 15px;
+
+    /* Effects */
+    --blur-effect: blur(10px);
+
+    /* Transition */
+    --transition: .3s;
+    --card-transition: .4s;
+}
+
+/* =========================
+   MAIN CSS
+========================= */
+
+@font-face {
+    font-family: neu;
+    src: url(../../fonts/NeueMachina-Regular.woff2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: neu;
+}
+
+body {
+    background: var(--body-bg);
+}
+
+.home {
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+/* NAVBAR */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 80px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-links select {
+    height: 2.8rem;
+    width: 14rem;
+    border-radius: 0.8rem;
+    border: none;
+    background-color: var(--icon-bg);
+    color: white;
+    font-size: 1.5rem;
+    appearance:base-select;
+    padding: 0.4rem;
+}
+
+
+
+
+
+
+.nav-links i {
+    margin-right: 2rem;
+    font-size: 1.4rem;
+    height: 50px;
+    width: 50px;
+    background-color: var(--icon-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--circle-radius);
+}
+
+.nav-links i:active {
+    scale: 1.2;
+}
+
+.nav-links i:hover {
+    box-shadow: var(--icon-hover-shadow);
+}
+
+.login-btn,
+.register-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--button-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.login-btn {
+    background: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--login-btn-border);
+}
+
+.login-btn:hover {
+    background: var(--text-color);
+    color: black;
+}
+
+.register-btn {
+    background: var(--register-btn-bg);
+    color: var(--text-color);
+}
+
+.register-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px;
+}
+
+.left {
+    width: 500px;
+    animation: fadeIn 1s ease;
+}
+
+.left h1 {
+    font-size: 4rem;
+    line-height: 1.2;
+}
+
+.left span {
+    color: var(--highlight-text);
+}
+
+.left p {
+    margin-top: 20px;
+    color: var(--paragraph-color);
+    line-height: 1.6;
+}
+
+.start-btn {
+    margin-top: 25px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: var(--start-btn-radius);
+    background: var(--start-btn-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: .4s;
+}
+
+.start-btn:hover {
+    transform: scale(1.08);
+    box-shadow: var(--start-btn-shadow);
+}
+
+/* NOTES PREVIEW */
+
+.right {
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+.note-card {
+    position: absolute;
+    width: 250px;
+    padding: 25px;
+    border-radius: var(--card-radius);
+    background: var(--note-card-bg);
+    backdrop-filter: var(--blur-effect);
+    border: 1px solid var(--note-card-border);
+    transition: var(--card-transition);
+}
+
+.note-card:hover {
+    transform: scale(1.1);
+}
+
+.card1 {
+    top: 30px;
+    left: 20px;
+    animation: float 4s infinite;
+}
+
+.card2 {
+    top: 140px;
+    right: 20px;
+    animation: float 5s infinite;
+}
+
+.card3 {
+    bottom: 30px;
+    left: 60px;
+    animation: float 6s infinite;
+}
+
+/* ANIMATIONS */
+
+@keyframes float {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive website for mobile and laptop */
+
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+
+@media (max-width:1024px) {
+
+    .navbar {
+        padding: 20px 40px;
+    }
+
+    .hero {
+        flex-direction: column;
+        gap: 50px;
+        text-align: center;
+    }
+
+    .left {
+        width: 90%;
+    }
+
+    .left h1 {
+        font-size: 3rem;
+    }
+
+    .right {
+        width: 350px;
+        height: 350px;
+    }
+
+    .note-card {
+        width: 220px;
+    }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width:768px) {
+
+    .navbar {
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        gap: 40px;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .left h1 {
+        font-size: 2.3rem;
+    }
+
+    .left p {
+        font-size: 0.95rem;
+    }
+
+    .start-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .right {
+        width: 300px;
+        height: 300px;
+    }
+
+    .note-card {
+        width: 180px;
+        padding: 18px;
+        font-size: 0.9rem;
+    }
+
+    .card1 {
+        top: 20px;
+        left: 0;
+    }
+
+    .card2 {
+        top: 100px;
+        right: 0;
+    }
+
+    .card3 {
+        bottom: 20px;
+        left: 30px;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width:480px) {
+
+    .navbar h2 {
+        font-size: 1.5rem;
+    }
+
+    .left h1 {
+        font-size: 1.8rem;
+    }
+
+    .left p {
+        font-size: 0.85rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .login-btn,
+    .register-btn {
+        width: 100%;
+    }
+
+    .right {
+        width: 260px;
+        height: 260px;
+    }
+
+    .note-card {
+        width: 160px;
+        padding: 15px;
+        font-size: 0.8rem;
+    }
+
+    .card1 {
+        top: 10px;
+        left: 0;
+    }
+
+    .card2 {
+        top: 90px;
+        right: 0;
+    }
+
+    .card3 {
+        bottom: 10px;
+        left: 20px;
+    }
+}

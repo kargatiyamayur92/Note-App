@@ -1,0 +1,104 @@
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+
+  /* Background Colors */
+  --container-bg: #121212;
+  --form-bg: #1f1f1f;
+  --input-bg: #2b2b2b;
+
+  /* Text Colors */
+  --heading-color: white;
+  --input-text-color: white;
+  --placeholder-color: #aaa;
+
+  /* Border Colors */
+  --input-border: #333;
+  --input-focus-border: #4caf50;
+
+  /* Button Colors */
+  --button-bg: #4caf50;
+  --button-hover-bg: #45a049;
+
+  /* Shadows */
+  --form-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+
+  /* Border Radius */
+  --form-radius: 12px;
+  --input-radius: 8px;
+  --button-radius: 8px;
+
+  /* Transition */
+  --transition: 0.3s;
+}
+
+/* =========================
+   MAIN CSS
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--container-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form {
+  width: 400px;
+  background-color: var(--form-bg);
+  padding: 30px;
+  border-radius: var(--form-radius);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: var(--form-shadow);
+}
+
+.register-form h2 {
+  color: var(--heading-color);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.register-form input {
+  padding: 12px;
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  background-color: var(--input-bg);
+  color: var(--input-text-color);
+  outline: none;
+}
+
+.register-form input::placeholder {
+  color: var(--placeholder-color);
+}
+
+.register-form input:focus {
+  border-color: var(--input-focus-border);
+}
+
+.register-form button {
+  padding: 12px;
+  border: none;
+  border-radius: var(--button-radius);
+  background-color: var(--button-bg);
+  color: var(--heading-color);
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.register-form button:hover {
+  background-color: var(--button-hover-bg);
+}

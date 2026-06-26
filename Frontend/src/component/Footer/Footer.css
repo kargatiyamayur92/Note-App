@@ -1,0 +1,92 @@
+/* =========================
+   VARIABLES
+========================= */
+
+:root{
+
+    /* Background Colors */
+    --footer-bg:#0d121e;
+
+    /* Text Colors */
+    --footer-text:white;
+    --footer-heading:lightseagreen;
+    --footer-description:#cbd5e1;
+    --footer-bottom-text:#9ca3af;
+
+    /* Border Colors */
+    --footer-border:#374151;
+
+    /* Hover Colors */
+    --footer-link-hover:#3b82f6;
+
+    /* Transition */
+    --transition:.3s;
+}
+
+/* =========================
+   MAIN CSS
+========================= */
+
+.footer{
+    background:var(--footer-bg);
+    color:var(--footer-text);
+
+    margin-top:50px;
+
+    padding:40px 20px 20px;
+}
+
+.footer-content{
+    text-align:center;
+    max-width:800px;
+    margin:auto;
+}
+
+.footer-content h2{
+    color:var(--footer-heading);
+    font-size:5rem;
+    font-weight:400;
+    margin-bottom:15px;
+}
+
+.footer-content p{
+    color:var(--footer-description);
+    line-height:1.7;
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+.footer-links span{
+    cursor:pointer;
+    transition:var(--transition);
+}
+
+.footer-links span:hover{
+    color:var(--footer-link-hover);
+}
+
+.footer-bottom{
+    border-top:1px solid var(--footer-border);
+
+    margin-top:30px;
+    padding-top:20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.footer-bottom p{
+    color:var(--footer-bottom-text);
+    font-size:14px;
+}

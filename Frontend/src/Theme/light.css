@@ -1,0 +1,28 @@
+.light {
+
+  --body-bg: #67e8f9;
+  --navbar-bg: #22d3ee;
+  --sidebar-bg: #22d3ee;
+  --footer-bg: #06b6d4;
+
+  --card-bg: #a5f3fc;
+  --form-bg: #a5f3fc;
+  --input-bg: #cffafe;
+
+  --text-color: #083344;
+  --heading-color: #083344;
+  --paragraph-color: #155e75;
+
+  --icon-bg: #67e8f9;
+  --footer-heading: rgba(255, 255, 255, 0.698);
+
+  --bg-main: #f8fafc;
+  --card-bg: #ffffff;
+  --input-bg: #f1f5f9;
+
+  --heading-color: #0f172a;
+  --text-color: #1e293b;
+  --placeholder-color: #64748b;
+
+  --input-border: #cbd5e1;
+}
