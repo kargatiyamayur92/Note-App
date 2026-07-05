@@ -120,7 +120,7 @@ function Login() {
           }
           else {
             if (response.data.success === false && response.data.message === 'OTP was expaired') {
-              document.querySelector('.forgatepasswordcontainer button').textContent = "Resend OTP"
+              document.querySelector('.forgatepasswordcontainer button').textContent = "Get Otp"
               setotp('')
             }
             toast.error(response.data.message, { autoClose: 400 });
@@ -150,6 +150,7 @@ function Login() {
             document.querySelector('.forgatepasswordcontainer input[placeholder="New password"]').style.display = 'none';
             document.querySelector('.forgatepasswordcontainer input[placeholder="Confirm password"]').style.display = 'none';
             document.querySelector('.forgatepasswordcontainer').style.display = 'none'
+            document.querySelector('.forgatepasswordcontainer button').textContent = "Set New Password"
           }
           else {
             toast.error(response.data.message, { autoClose: 300 });

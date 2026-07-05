@@ -1,4 +1,4 @@
-import express from "express";
+import express, { text } from "express";
 import { UserModel } from '../model/user.model.js'
 import bcrypt, { genSalt, hash } from 'bcrypt'
 import nodemailer from 'nodemailer'
@@ -91,7 +91,7 @@ export const verifyOTP = async (req, res) => {
             )
         }
 
-        bcrypt.compare(otp, user.resetOTP,async (err, result) => {
+        bcrypt.compare(otp, user.resetOTP, async (err, result) => {
             if (!result) {
                 res.send(
                     {
