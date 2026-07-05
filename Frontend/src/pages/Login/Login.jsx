@@ -1,4 +1,4 @@
-import { useEffect, useState ,useRef} from "react";
+import { useEffect, useState, useRef } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -54,14 +54,12 @@ function Login() {
   };
 
   function otpverify(e) {
-    console.log(e.target.textContent)
     if (!otpemail) {
       return toast.error("Enter Your Email", { autoClose: 300 })
     }
     if (e.target.textContent === 'Get Otp' || e.target.textContent === 'Resend OTP') {
       axios.post('/api/user/sendOTP', { otpemail })
         .then((response) => {
-          console.log(response);
           if (response.data.success) {
             toast.success(response.data.message);
             document.querySelector('.forgatepasswordcontainer input[type="number"]').style.display = 'flex'
@@ -85,7 +83,7 @@ function Login() {
               if (IsVerifyRef.current) {
                 clearInterval(countdown);
               }
-      
+
               if (timeRemaining < 0) {
                 clearInterval(countdown);
                 timerelement.textContent = "OTP was expaired"
@@ -100,6 +98,7 @@ function Login() {
           }
           else {
             toast.error(response.data.message, { autoClose: 300 });
+            setotp('')
           }
 
         })
@@ -147,6 +146,9 @@ function Login() {
         .then((response) => {
           if (response.data.success) {
             toast.success(response.data.message, { autoClose: 300 });
+            document.querySelector('.forgatepasswordcontainer input[type="number"]').style.display = 'none'
+            document.querySelector('.forgatepasswordcontainer input[placeholder="New password"]').style.display = 'none';
+            document.querySelector('.forgatepasswordcontainer input[placeholder="Confirm password"]').style.display = 'none';
             document.querySelector('.forgatepasswordcontainer').style.display = 'none'
           }
           else {
@@ -171,7 +173,6 @@ function Login() {
     <>
       <div className="container" onClick={() => {
         document.querySelector('.forgatepasswordcontainer').style.display = 'none'
-        console.log("display none")
       }}>
         <form className="login-form" onSubmit={handleSubmit} method="post" >
           <h2>Login</h2>
@@ -204,7 +205,6 @@ function Login() {
             <small onClick={(e) => {
               e.stopPropagation();
               document.querySelector('.forgatepasswordcontainer').style.display = 'flex';
-              console.log("Display flex")
             }}>Forgate Password</small>
           </div>
 
