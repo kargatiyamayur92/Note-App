@@ -111,3 +111,85 @@
   cursor: pointer;
   font-weight: bold;
 }
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.links small {
+  color: white;
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  border-radius: 0.4rem;
+  background-color: rgba(255, 255, 255, 0.10);
+}
+
+.links small:hover {
+  background: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.20);
+}
+
+.links small:active {
+  transform: scale(1.1);
+}
+
+.forgatepasswordcontainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 380px;
+  background-color: rgba(255,255,255,0.90);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 30px;
+  border-radius: 0.7rem;
+  z-index: 10;
+  display: none;
+}
+
+.forgatepasswordcontainer input{
+  padding: 12px;
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  background:rgba(255, 255, 255, 0.15);
+  color: black;
+  outline: none;
+  width: 90%;
+  font-size: 1rem;
+}
+.forgatepasswordcontainer input[type='number']{
+  display: none;
+}
+
+.forgatepasswordcontainer button {
+  padding: 12px;
+  border: none;
+  border-radius: var(--button-radius);
+  background: rgba(0, 0, 255, 0.881);
+  color: var(--heading-color);
+  cursor: pointer;
+  font-size: 16px;
+  width: 80%;
+  margin-bottom: 0.7rem;
+}
+.forgatepasswordcontainer button:active{
+  transform: scale(1.1);
+  background: rgba(0, 0, 255);
+}
+
+.forgatepasswordcontainer input[placeholder='New password']{
+  display: none;
+}
+
+.forgatepasswordcontainer input[placeholder='Confirm password']{
+  display: none;
+}
+.forgatepasswordcontainer span{
+  display: none;
+}
