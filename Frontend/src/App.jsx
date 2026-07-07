@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DashboardStats from './pages/Dashboard/Dashboard.jsx'
 import TrashNotes from './pages/Trashnotes/TrashNotes.jsx'
+import NOtFound from './pages/notfound/notfound.jsx'
 
 
 
@@ -26,6 +27,8 @@ const App = () => {
         <Route path='/profilePicture' element={<ProfilePhoto />} />
         <Route path='/dashboardStatus' element={<DashboardStats />} />
         <Route path='/TrashNotes' element={<TrashNotes />} />
+
+        <Route path='*' element={<NOtFound/>}></Route>
 
       </Routes>
       <ToastContainer
