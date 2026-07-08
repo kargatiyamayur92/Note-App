@@ -3,9 +3,22 @@ import { UserModel } from "../model/user.model.js"
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import cookieParser from "cookie-parser";
+import nodemailer from 'nodemailer';
 
 export const registerUser = async (req, res) => {
     try {
+        console.log("register api working")
+        const transpoter = nodemailer.createTransport(
+            {
+                service: 'gmail',
+                auth: {
+                    user: process.env.EMAIL,
+                    pass: process.env.EMIAL_PASSWORD,
+                }
+            }
+        )
+
+
         let { fullname, email, mobileno, password, confirmpassword } = req.body;
 
         if (password !== confirmpassword) {
@@ -36,7 +49,42 @@ export const registerUser = async (req, res) => {
             password,
         })
 
-        res.status(201).json({ success: true, message: "User account created successfully" });
+        res.json(
+            {
+                success: true,
+                message: "User account created successfully"
+            }
+        )
+        const mailOption = {
+            from: process.env.EMAIL,
+            to: email,
+            subject: `Welcome to ${fullname}! Your account is ready`,
+            html: ` 
+                <h2>Hi,</h2>
+                <h2>Dear ${fullname},</h2>
+                <p style="text-wrap : wrap; font-size:1rem;">Thank you for registering! Your account successfully created. </p>
+                <p style="text-wrap : wrap; font-size:1rem; ">You can now log in your account and access your profile, explore our features, and manage your setting. </p>
+                <p style="text-wrap : wrap; font-size:1rem; ">Here, your account deatails for refreance : </p>
+                <h3> Website : Note app</h3>
+                <h3> Full name : ${fullname} </h3>
+                <h3> Email : ${email} </h3>
+                
+            `
+        };
+
+
+        transpoter.sendMail(mailOption)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((err) => {
+                res.json(
+                    {
+                        success: false,
+                        message: `Email not send for creating user`
+                    }
+                )
+            })
     }
     catch (err) {
         res.status(500).json(

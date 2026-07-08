@@ -5,7 +5,7 @@ import './notfound.css'
 const NOtFound = () => {
   return (
     <div className='notfoundpage' >
-      <video autoPlay loop height={100} width={100} controls>
+      <video autoPlay height={100} width={100}>
           <source src='../../../public/404page.mp4'></source>
         </video> 
     </div>

@@ -19,8 +19,7 @@ export const sendOTP = async (req, res) => {
             }
         )
 
-
-
+        
         let email = req.body;
         let user = await UserModel.findOne({ email: email.otpemail });
         if (!user) {

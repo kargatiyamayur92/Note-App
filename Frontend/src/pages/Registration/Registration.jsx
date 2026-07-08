@@ -56,58 +56,60 @@ function Registration() {
   }
 
   return (
-    <div className="container">
-      <form className="register-form" onSubmit={handleSubmit} method="post">
-        <h2>Registration</h2>
+    <>
+      <div className="container">
+        <form className="register-form" onSubmit={handleSubmit} method="post">
+          <h2>Registration</h2>
 
-        <input
-          type="text"
-          name="fullname"
-          placeholder="Full Name"
-          value={formData.fullname}
-          onChange={handleChange}
-          required
-        />
+          <input
+            type="text"
+            name="fullname"
+            placeholder="Full Name"
+            value={formData.fullname}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          type="tel"
-          name="mobileno"
-          placeholder="Mobile Number"
-          value={formData.mobileno}
-          onChange={handleChange}
-          required
-        />
+          <input
+            type="tel"
+            name="mobileno"
+            placeholder="Mobile Number"
+            value={formData.mobileno}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          type="password"
-          name="confirmpassword"
-          placeholder="Confirm Password"
-          value={formData.confirmpassword}
-          onChange={handleChange}
-          required
-        />
+          <input
+            type="password"
+            name="confirmpassword"
+            placeholder="Confirm Password"
+            value={formData.confirmpassword}
+            onChange={handleChange}
+            required
+          />
 
-        <button type="submit">Register</button>
-      </form>
-    </div>
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </>
   );
 }
 
