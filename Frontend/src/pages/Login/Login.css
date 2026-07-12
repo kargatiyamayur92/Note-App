@@ -1,195 +1,274 @@
-/* =========================
-   VARIABLES
-========================= */
-
-:root {
-
-  /* Background Colors */
-  --container-bg: #121212;
-  --form-bg: #1e1e1e;
-  --input-bg: #2b2b2b;
-
-  /* Text Colors */
-  --heading-color: white;
-  --input-text-color: white;
-  --placeholder-color: #aaa;
-  --link-color: #ccc;
-
-  /* Border Colors */
-  --input-border: #333;
-  --input-focus-border: #4caf50;
-
-  /* Button Colors */
-  --button-bg: #4caf50;
-  --button-hover-bg: #43a047;
-
-  /* Shadows */
-  --form-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-
-  /* Border Radius */
-  --form-radius: 12px;
-  --input-radius: 8px;
-  --button-radius: 8px;
-}
-
-/* =========================
-   MAIN CSS
-========================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
+/* ===== Page / Background ===== */
 .container {
-  width: 100%;
   min-height: 100vh;
-  background: var(--container-bg);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #ff0f6f 0%, #25755c 50%, #00c6ff 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 12s ease infinite;
 }
 
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Glass Card ===== */
 .login-form {
-  width: 380px;
-  background: var(--form-bg);
-  padding: 30px;
-  border-radius: var(--form-radius);
+  width: 100%;
+  max-width: 380px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  box-shadow: var(--form-shadow);
+  gap: 18px;
+  padding: 40px 32px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
 
 .login-form h2 {
-  color: var(--heading-color);
   text-align: center;
-  margin-bottom: 10px;
+  color: #ffffff;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* ===== Inputs ===== */
 .login-form input {
-  padding: 12px;
-  border: 1px solid var(--input-border);
-  border-radius: var(--input-radius);
-  background: var(--input-bg);
-  color: var(--input-text-color);
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 15px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
   outline: none;
+  transition: all 0.25s ease;
 }
 
 .login-form input::placeholder {
-  color: var(--placeholder-color);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .login-form input:focus {
-  border-color: var(--input-focus-border);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
 }
 
+.login-form input:-webkit-autofill {
+  -webkit-text-fill-color: #ffffff;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.08) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ===== Button ===== */
 .login-form button {
-  padding: 12px;
+  margin-top: 8px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
   border: none;
-  border-radius: var(--button-radius);
-  background: var(--button-bg);
-  color: var(--heading-color);
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .login-form button:hover {
-  background: var(--button-hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(238, 9, 121, 0.4);
 }
 
-.register-link {
-  color: var(--link-color);
-  text-align: center;
-  font-size: 14px;
+.login-form button:active {
+  transform: translateY(0);
 }
 
-.register-link span {
-  color: var(--button-bg);
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.links {
+/* ===== Links row ===== */
+.login-form .links {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.7rem;
+  gap: 8px;
+  margin-top: 4px;
 }
 
-.links small {
-  color: white;
+.login-form .register-link {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+.login-form .register-link span {
+  color: #ffd166;
+  font-weight: 600;
   cursor: pointer;
-  padding: 0.4rem 1rem;
-  border-radius: 0.4rem;
-  background-color: rgba(255, 255, 255, 0.10);
+  transition: color 0.2s ease;
 }
 
-.links small:hover {
-  background: rgba(255, 255, 255, 0.15);
-  background-color: rgba(255, 255, 255, 0.20);
+.login-form .register-link span:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
-.links small:active {
-  transform: scale(1.1);
+.login-form .links small {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
+
+.login-form .links small:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* =====================================================
+   FORGOT PASSWORD MODAL
+   (hidden by default via inline style display:none;
+    toggled to 'flex' on click)
+   ===================================================== */
 
 .forgatepasswordcontainer {
-  position: absolute;
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+
+  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  width: 380px;
-  background-color: rgba(255,255,255,0.90);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  padding-top: 30px;
-  border-radius: 0.7rem;
-  z-index: 10;
-  display: none;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+
+  width: 90%;
+  max-width: 360px;
+  padding: 36px 30px;
+
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18);
 }
 
-.forgatepasswordcontainer input{
-  padding: 12px;
-  border: 1px solid var(--input-border);
-  border-radius: var(--input-radius);
-  background:rgba(255, 255, 255, 0.15);
-  color: black;
+.forgatepasswordcontainer input {
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 14px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
   outline: none;
-  width: 90%;
-  font-size: 1rem;
+  transition: all 0.25s ease;
 }
-.forgatepasswordcontainer input[type='number']{
-  display: none;
+
+.forgatepasswordcontainer input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.forgatepasswordcontainer input:focus {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
+
+.forgatepasswordcontainer span {
+  align-self: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.5px;
 }
 
 .forgatepasswordcontainer button {
-  padding: 12px;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
   border: none;
-  border-radius: var(--button-radius);
-  background: rgba(0, 0, 255, 0.881);
-  color: var(--heading-color);
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 16px;
-  width: 80%;
-  margin-bottom: 0.7rem;
-}
-.forgatepasswordcontainer button:active{
-  transform: scale(1.1);
-  background: rgba(0, 0, 255);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.forgatepasswordcontainer input[placeholder='New password']{
-  display: none;
+.forgatepasswordcontainer button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(238, 9, 121, 0.4);
 }
 
-.forgatepasswordcontainer input[placeholder='Confirm password']{
-  display: none;
+/* ===== Responsive ===== */
+
+@media (max-width: 768px) {
+  .login-form {
+    max-width: 340px;
+    padding: 36px 26px;
+  }
 }
-.forgatepasswordcontainer span{
-  display: none;
+
+@media (max-width: 480px) {
+  .container {
+    padding: 16px;
+  }
+
+  .login-form {
+    max-width: 100%;
+    padding: 32px 22px;
+    border-radius: 16px;
+    gap: 14px;
+  }
+
+  .login-form h2 {
+    font-size: 20px;
+  }
+
+  .login-form input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .login-form button {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .forgatepasswordcontainer {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .login-form {
+    padding: 26px 16px;
+    border-radius: 14px;
+  }
+
+  .login-form h2 {
+    font-size: 18px;
+  }
+
+  .login-form input,
+  .login-form button {
+    padding: 11px 12px;
+    font-size: 13px;
+  }
 }

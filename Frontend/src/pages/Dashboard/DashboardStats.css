@@ -1,250 +1,328 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* =====================================================
+   Reuses the same theme tokens as dashboard.css / home.css.
+   If this file loads alongside dashboard.css, the
+   [data-theme] block below is redundant and can be removed.
+   ===================================================== */
+
+:root,
+[data-theme="dark"] {
+  --gradient: linear-gradient(135deg, #1e3a8a 0%, #7f1d1d 55%, #b8860b 100%);
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.18);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --accent: #d4a017;
+  --accent-2: #b91c1c;
 }
+
+[data-theme="light"] {
+  --gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 50%, #f5f7fa 100%);
+  --surface: rgba(255, 255, 255, 0.6);
+  --surface-strong: rgba(255, 255, 255, 0.85);
+  --border: rgba(20, 20, 30, 0.12);
+  --text: #1a1a24;
+  --text-muted: rgba(20, 20, 30, 0.6);
+  --accent: #b8860b;
+  --accent-2: #1e3a8a;
+}
+
+[data-theme="emerald"] {
+  --gradient: linear-gradient(135deg, #0f9b0f 0%, #134e5e 50%, #0b3d2e 100%);
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.18);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.75);
+  --accent: #34d399;
+  --accent-2: #0b3d2e;
+}
+
+[data-theme="ocean"] {
+  --gradient: linear-gradient(135deg, #2575fc 0%, #6a11cb 50%, #00c6ff 100%);
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.18);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.75);
+  --accent: #38bdf8;
+  --accent-2: #6a11cb;
+}
+
+[data-theme="purple"] {
+  --gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 50%, #a855f7 100%);
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.18);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.75);
+  --accent: #e879f9;
+  --accent-2: #6a11cb;
+}
+
+[data-theme="sunset"] {
+  --gradient: linear-gradient(135deg, #ff512f 0%, #dd2476 50%, #f97316 100%);
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.18);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.8);
+  --accent: #fb7185;
+  --accent-2: #dd2476;
+}
+
+/* =====================================================
+   PAGE SHELL
+   ===================================================== */
 
 .stats-page {
-    min-height: 100vh;
-    background: #0f172a;
-    color: white;
-    padding: 40px;
+  min-height: 100vh;
+  padding: 40px 48px 60px;
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--gradient);
+  background-size: 200% 200%;
+  animation: gradientShift 16s ease infinite;
 }
 
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.stats-page h1,
+.stats-page h2,
+.stats-page h3 {
+  font-family: 'Sora', sans-serif;
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
 .stats-header {
-    text-align: center;
-    margin-bottom: 40px;
+  max-width: 1100px;
+  margin: 0 auto 36px;
+  position: relative;
+  text-align: center;
 }
 
 .back-btn {
-    width: fit-content;
-    position: fixed;
-    top: 4;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  position: absolute;
+  left: 0;
+  top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
 
-    padding: 12px 20px;
-
-    background: #1e293b;
-    color: white;
-
-    border-radius: 12px;
-
-    cursor: pointer;
-
-    transition: .3s;
-
-    margin-bottom: 30px;
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .back-btn:hover {
-    transform: translateX(-5px);
-
-    box-shadow:
-        0 0 15px rgba(59, 130, 246, .3);
+  background: var(--surface-strong);
+  transform: translateX(-3px);
 }
 
 .back-btn i {
-    font-size: 1rem;
-}
-
-.back-btn span {
-    font-size: 1rem;
-    font-weight: 500;
+  font-size: 12px;
 }
 
 .stats-header h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
 }
 
 .stats-header p {
-    color: #94a3b8;
+  font-size: 14px;
+  color: var(--text-muted);
 }
 
-.stats-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(250px, 1fr));
+/* =====================================================
+   STAT CARDS
+   ===================================================== */
 
-    gap: 25px;
+.stats-grid {
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 18px;
 }
 
 .stat-card {
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 20px;
+  padding: 22px 20px;
+  text-align: center;
 
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-
-    transition: .3s;
-    cursor: pointer;
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .stat-card:hover {
-    transform: translateY(-10px);
-    box-shadow:
-        0 0 20px rgba(59, 130, 246, .3);
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
 }
 
 .stat-card h3 {
-    color: #cbd5e1;
-    font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
 }
 
 .stat-card span {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #3b82f6;
+  display: block;
+  font-family: 'Sora', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
+
+/* =====================================================
+   CHARTS
+   ===================================================== */
 
 .charts-container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
+.charts-container > * {
+  padding: 22px;
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+/* =====================================================
+   QUICK OVERVIEW
+   ===================================================== */
+
 .recent-section {
-    margin-top: 50px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .recent-section h2 {
-    margin-bottom: 20px;
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 16px;
 }
 
 .overview-card {
-    background: #1e293b;
-    padding: 25px;
-    border-radius: 20px;
+  padding: 24px 26px;
+
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
 }
 
 .overview-card p {
-    margin-bottom: 12px;
-    color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-muted);
 }
 
-/* =========================
-   TABLET
-========================= */
+.overview-card p:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.overview-card p b {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+  .charts-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .charts-container > *:last-child {
+    grid-column: 1 / -1;
+  }
+}
 
 @media (max-width: 768px) {
+  .stats-page {
+    padding: 32px 24px 48px;
+  }
 
-    .stats-page {
-        padding: 20px;
-    }
+  .back-btn {
+    position: static;
+    display: inline-flex;
+    margin-bottom: 16px;
+  }
 
-    .back-btn {
-        position: static;
-        margin-bottom: 20px;
-    }
+  .stats-header h1 {
+    font-size: 24px;
+  }
 
-    .stats-header {
-        margin-top: 20px;
-    }
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 14px;
+  }
 
-    .stats-header h1 {
-        font-size: 2.2rem;
-    }
+  .stat-card {
+    padding: 18px 14px;
+  }
 
-    .stats-header p {
-        font-size: 0.95rem;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-    }
-
-    .stat-card {
-        padding: 25px;
-    }
-
-    .stat-card span {
-        font-size: 2.5rem;
-    }
-
-    .charts-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .recent-section {
-        margin-top: 35px;
-    }
-
-    .overview-card {
-        padding: 20px;
-    }
+  .stat-card span {
+    font-size: 26px;
+  }
 }
 
+@media (max-width: 600px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
 
-/* =========================
-   MOBILE
-========================= */
+  .charts-container > *:last-child {
+    grid-column: auto;
+  }
+}
 
-@media (max-width: 480px) {
+@media (max-width: 420px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    .stats-page {
-        padding: 15px;
-    }
-
-    .back-btn {
-        width: 100%;
-        justify-content: center;
-        padding: 10px;
-    }
-
-    .back-btn span {
-        font-size: 0.9rem;
-    }
-
-    .stats-header h1 {
-        font-size: 1.8rem;
-    }
-
-    .stats-header p {
-        font-size: 0.85rem;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .stat-card {
-        padding: 20px;
-    }
-
-    .stat-card h3 {
-        font-size: 1rem;
-    }
-
-    .stat-card span {
-        font-size: 2rem;
-    }
-
-    .charts-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .recent-section {
-        margin-top: 25px;
-    }
-
-    .recent-section h2 {
-        font-size: 1.3rem;
-    }
-
-    .overview-card {
-        padding: 15px;
-    }
-
-    .overview-card p {
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }
+  .overview-card {
+    padding: 20px 18px;
+  }
 }

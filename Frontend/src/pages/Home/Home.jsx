@@ -12,7 +12,8 @@ function Home() {
 
 
     useEffect(() => {
-        document.body.className = theme
+        // document.body.className = theme
+        document.body.setAttribute('data-theme', theme)
         localStorage.setItem('theamMode', theme)
     }, [theme])
 

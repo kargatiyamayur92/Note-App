@@ -1,142 +1,255 @@
-/* =========================
-   VARIABLES
-========================= */
+/* =====================================================
+   Reuses the same theme tokens as dashboard.css / home.css.
+   Apply with: document.body.setAttribute('data-theme', theme)
+   If this file loads alongside dashboard.css, the
+   [data-theme] block below is redundant and can be removed.
+   ===================================================== */
 
-:root{
-
-    /* Background Colors */
-    --sidebar-bg:#111827;
-    --menu-hover-bg:#1f2937;
-
-    /* Text Colors */
-    --sidebar-text:white;
-    --profile-email-color:#9ca3af;
-
-    /* Border Colors */
-    --profile-border:#3b82f6;
-
-    /* Button Colors */
-    --logout-btn-bg:#ef4444;
-    --logout-btn-hover-bg:#dc2626;
-
-    /* Shadows */
-    --sidebar-shadow:5px 0 20px rgba(0,0,0,.3);
-
-    /* Border Radius */
-    --profile-radius:50%;
-    --menu-radius:10px;
-    --button-radius:10px;
-
-    /* Transition */
-    --transition:.3s;
-    --image-transition:.4s;
+:root,
+[data-theme="dark"] {
+  --gradient: linear-gradient(135deg, #1e3a8a 0%, #7f1d1d 55%, #b8860b 100%);
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.18);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --accent: #d4a017;
+  --accent-2: #b91c1c;
 }
 
-/* =========================
-   MAIN CSS
-========================= */
-
-.sidebar{
-    position:fixed;
-    right:0%;
-    top:0%;
-
-    width:280px;
-    height:100vh;
-
-    background:var(--sidebar-bg);
-    color:var(--sidebar-text);
-
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-
-    padding:25px;
-
-    box-shadow:var(--sidebar-shadow);
-    cursor:ew-resize;
+[data-theme="light"] {
+  --gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 50%, #f5f7fa 100%);
+  --surface: rgba(255, 255, 255, 0.6);
+  --surface-strong: rgba(255, 255, 255, 0.85);
+  --border: rgba(20, 20, 30, 0.12);
+  --text: #1a1a24;
+  --text-muted: rgba(20, 20, 30, 0.6);
+  --accent: #b8860b;
+  --accent-2: #1e3a8a;
 }
 
-
-
-/* Profile */
-
-.profile{
-    text-align:center;
+[data-theme="emerald"] {
+  --gradient: linear-gradient(135deg, #0f9b0f 0%, #134e5e 50%, #0b3d2e 100%);
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.18);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.75);
+  --accent: #34d399;
+  --accent-2: #0b3d2e;
 }
 
-.profile img{
-    width:100px;
-    height:100px;
-
-    border-radius:var(--profile-radius);
-    object-fit:cover;
-
-    border:4px solid var(--profile-border);
-
-    transition:var(--image-transition);
+[data-theme="ocean"] {
+  --gradient: linear-gradient(135deg, #2575fc 0%, #6a11cb 50%, #00c6ff 100%);
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.18);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.75);
+  --accent: #38bdf8;
+  --accent-2: #6a11cb;
 }
 
-.profile img:hover{
-    transform:scale(1.1);
+[data-theme="purple"] {
+  --gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 50%, #a855f7 100%);
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.18);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.75);
+  --accent: #e879f9;
+  --accent-2: #6a11cb;
 }
 
-.profile h3{
-    margin-top:15px;
+[data-theme="sunset"] {
+  --gradient: linear-gradient(135deg, #ff512f 0%, #dd2476 50%, #f97316 100%);
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.18);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.8);
+  --accent: #fb7185;
+  --accent-2: #dd2476;
 }
 
-.profile p{
-    color:var(--profile-email-color);
-    font-size:14px;
+/* =====================================================
+   SIDEBAR SHELL
+   ===================================================== */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 16vw;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 20px 24px;
+
+  background: var(--gradient);
+  border-right: 1px solid var(--border);
+  cursor:e-resize;
 }
 
-/* Menu */
-
-.menu{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
+/* Frosted glass panel sitting on top of the gradient */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 0;
 }
 
-.menu-item{
-    padding:14px;
-
-    border-radius:var(--menu-radius);
-
-    cursor:pointer;
-
-    transition:var(--transition);
-
-    
-    font-size: 1.3rem;
+.sidebar > * {
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
-.menu-item:hover{
-    background:var(--menu-hover-bg);
+/* =====================================================
+   PROFILE
+   ===================================================== */
 
-    transform:translateX(8px);
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 28px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
 }
 
-/* Logout */
-
-.logout-btn{
-    border:none;
-
-    padding:14px;
-
-    border-radius:var(--button-radius);
-
-    background:var(--logout-btn-bg);
-
-    color:var(--sidebar-text);
-
-    cursor:pointer;
-
-    transition:var(--transition);
+.profile img {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 3px solid var(--border);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-.logout-btn:hover{
-    background:var(--logout-btn-hover-bg);
+.profile img:hover {
+  transform: scale(1.06);
+  border-color: var(--accent);
+}
 
-    transform:scale(1.03);
+.profile h3 {
+  margin-top: 14px;
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.profile p {
+  font-size: 13px;
+  color: var(--text-muted);
+  word-break: break-word;
+}
+
+/* =====================================================
+   MENU
+   ===================================================== */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  flex: 1;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.menu-item:hover {
+  background: var(--surface);
+  transform: translateX(4px);
+}
+
+.menu-item:active {
+  background: var(--surface-strong);
+}
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+.logout-btn {
+  margin-top: 16px;
+  width: 100%;
+  padding: 13px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 22vw;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    width: 240px;
+    z-index: 50;
+    box-shadow: 8px 0 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .profile img {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 210px;
+    padding: 24px 16px 20px;
+  }
+
+  .menu-item {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
 }
