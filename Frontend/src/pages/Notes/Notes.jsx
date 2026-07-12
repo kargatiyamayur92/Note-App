@@ -423,7 +423,7 @@ function Notes() {
 
           < nav className="navbar" >
 
-            <h2>NoteFlow</h2>
+            <h2>NoteFlow ++</h2>
 
             <div className="user-box">
 

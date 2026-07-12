@@ -41,7 +41,7 @@ function Home() {
         <div className="home">
 
             <nav className="navbar">
-                <h2>NoteFlow</h2>
+                <h2>NoteFlow +</h2>
 
                 <div className="nav-links">
                     <select name="" id="" onChange={(e) => {
